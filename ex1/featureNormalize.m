@@ -28,8 +28,12 @@ sigma = zeros(1, size(X, 2));
 
 
 mu = mean(X);
-s = std(X);
-X_norm = (X.-mu)./s;
+sigma = std(X);
+%X_norm = (X.-mu)./s;
+
+for i = 1:size(X,2)
+	X_norm(:,i) = (X(:,i) - mu(i)) / sigma(i);
+end
 
 
 

@@ -82,7 +82,7 @@ X = [ones(m, 1) X];
 fprintf('Running gradient descent ...\n');
 
 % Choose some alpha value
-alpha = 0.01;
+alpha = 0.03;
 num_iters = 400;
 
 % Init Theta and Run Gradient Descent 
@@ -95,6 +95,13 @@ plot(1:numel(J_history), J_history, '-b', 'LineWidth', 2);
 xlabel('Number of iterations');
 ylabel('Cost J');
 
+% hold on;
+% alpha = 0.3;
+% num_iters = 400;
+% theta1 = zeros(3, 1);
+% [theta1, J_history1] = gradientDescentMulti(X, y, theta1, alpha, num_iters);
+% plot(1:numel(J_history1), J_history1, '-r', 'LineWidth', 2);
+
 % Display gradient descent's result
 fprintf('Theta computed from gradient descent: \n');
 fprintf(' %f \n', theta);
@@ -104,7 +111,13 @@ fprintf('\n');
 % ====================== YOUR CODE HERE ======================
 % Recall that the first column of X is all-ones. Thus, it does
 % not need to be normalized.
-price = 0; % You should change this
+
+%fprintf(' mu = %f \n', mu);
+%fprintf(' sigma = %f \n', sigma);
+%Xp = ([1, 1650, 3] - [0 mu])/[1 sigma];
+%fprintf(' %f \n', Xp);
+%price = Xp* theta; 
+price = ([1, 1650, 3] - [0 mu])./[1 sigma]* theta;
 
 
 % ============================================================
@@ -149,7 +162,7 @@ fprintf('\n');
 
 % Estimate the price of a 1650 sq-ft, 3 br house
 % ====================== YOUR CODE HERE ======================
-price = 0; % You should change this
+price = [1 1650 3] * theta; % You should change this
 
 
 % ============================================================
